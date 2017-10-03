@@ -9,27 +9,29 @@ public class Author extends Person {
 
     public Author(String firstName, String lastName) {
         super(firstName, lastName);
-        books = new ArrayList();
+        books = new ArrayList<String>();
     }
 
     /**
      * @deprecated Use publishedBooks instead
      */
-    @Deprecated
+    @SuppressWarnings({"deprecation", "unchecked"})
     public List<String> getBooks() {
         return books;
     }
-
+    @SuppressWarnings("unchecked") //pass in unchecked warning to remove error
     public List<String> publishedBooks() {
         return books;
     }
-
+    @SuppressWarnings("unchecked")
     public void addBook(String book) {
         books.add(book);
     }
 
-
+    @Deprecated
     public String sortName() {
         return String.format("%s, %s", lastName, firstName);
     }
 }
+
+//run main method -- javac -d out/ src/* -Xlint:unchecked
